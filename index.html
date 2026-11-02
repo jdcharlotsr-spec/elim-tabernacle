@@ -459,161 +459,625 @@ footer{background:#081b16;color:#fff;padding:34px 0} .foot{display:flex;justify-
   </div>
 </section>
 
+
+<!-- ==========================================
+     ELIM TABERNACLE — STATEMENT OF FAITH
+     Complete HTML + CSS + JavaScript
+     ========================================== -->
+
 <section id="beliefs">
-  <div class="container">
-    <div class="kicker">What We Believe &amp; Value</div>
-    <h2 class="title">
-      Rooted in the Apostolic faith. Centered in Jesus Christ.
-    </h2>
-    <p class="copy">
-      We are committed to the historic Apostolic Pentecostal witness
-      of the New Testament: a Christ-centered, Spirit-filled church
-      that honors Scripture, proclaims the Gospel, lives holy,
-      prays fervently, praises sincerely and believes in the
-      delivering power of Jesus Christ.
-    </p>
 
-    <div class="beliefs-grid">
+<style>
+/* SECTION LAYOUT */
 
-      <article class="belief">
-        <div class="num">01</div>
+#beliefs .faith-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 48px;
+  max-width: 1050px;
+  margin: 45px auto 0;
+  align-items: start;
+}
+
+#beliefs .faith-intro {
+  max-width: 780px;
+}
+
+/* LEFT NAVIGATION */
+
+#beliefs .faith-navigation {
+  position: sticky;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+
+#beliefs .faith-tab {
+  width: 100%;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 10px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  border-left: 3px solid transparent;
+  border-radius: 0;
+  text-align: left;
+  font-family: Inter, sans-serif;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+#beliefs .faith-tab:hover {
+  color: var(--deep);
+  background: rgba(185,148,82,.05);
+}
+
+#beliefs .faith-tab.active {
+  border-left-color: var(--gold);
+  color: var(--deep);
+  background: rgba(185,148,82,.07);
+  font-weight: 600;
+}
+
+#beliefs .faith-tab:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -2px;
+}
+
+#beliefs .faith-tab-number {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.35rem;
+  color: var(--gold);
+  min-width: 28px;
+  line-height: 1;
+}
+
+#beliefs .faith-tab-label {
+  font-size: .87rem;
+  line-height: 1.4;
+}
+
+/* RIGHT CONTENT AREA */
+
+#beliefs .faith-content {
+  min-width: 0;
+  border-left: 1px solid var(--line);
+  padding-left: 40px;
+  min-height: 340px;
+}
+
+#beliefs .faith-panel {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0 0 34px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+#beliefs .faith-panel[hidden] {
+  display: none !important;
+}
+
+#beliefs .faith-panel.active {
+  animation: faithFade .45s ease both;
+}
+
+@keyframes faithFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#beliefs .faith-article-number {
+  color: var(--gold);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+#beliefs .faith-panel h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.3rem, 4vw, 3.3rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--deep);
+  margin-bottom: 24px;
+}
+
+#beliefs .faith-panel p {
+  color: var(--muted);
+  font-size: .95rem;
+  line-height: 1.9;
+  margin: 0;
+}
+
+/* SCRIPTURAL FOUNDATION */
+
+#beliefs .faith-scriptures {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  margin-top: 28px;
+}
+
+#beliefs .faith-scriptures strong {
+  display: block;
+  color: var(--deep);
+  font-family: Inter, sans-serif;
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+#beliefs .faith-scriptures p {
+  font-size: .88rem;
+  line-height: 1.8;
+}
+
+/* FEATURED BIBLE VERSE */
+
+#beliefs .faith-verse {
+  margin-top: 28px;
+  padding: 4px 0 4px 22px;
+  border-left: 2px solid var(--gold);
+}
+
+#beliefs .faith-verse blockquote {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--deep);
+  margin: 0 0 12px;
+}
+
+#beliefs .faith-verse cite {
+  display: block;
+  font-family: Inter, sans-serif;
+  font-size: .76rem;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+/* TABLET */
+
+@media (max-width: 850px) {
+  #beliefs .faith-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  #beliefs .faith-navigation {
+    position: static;
+    flex-direction: row;
+    overflow-x: auto;
+    border-top: none;
+    border-bottom: 1px solid var(--line);
+    scrollbar-width: thin;
+  }
+
+  #beliefs .faith-tab {
+    width: auto;
+    flex: 0 0 auto;
+    padding: 12px 16px;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+  }
+
+  #beliefs .faith-tab.active {
+    border-left: none;
+    border-bottom-color: var(--gold);
+  }
+
+  #beliefs .faith-content {
+    border-left: none;
+    padding-left: 0;
+    min-height: 0;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 560px) {
+  #beliefs .faith-layout {
+    margin-top: 28px;
+  }
+
+  #beliefs .faith-panel h3 {
+    font-size: 2.25rem;
+  }
+
+  #beliefs .faith-panel p {
+    font-size: .91rem;
+  }
+
+  #beliefs .faith-tab {
+    gap: 8px;
+    padding: 12px;
+  }
+
+  #beliefs .faith-tab-label {
+    font-size: .83rem;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  #beliefs .faith-panel.active {
+    animation: none;
+  }
+
+  #beliefs .faith-tab {
+    transition: none;
+  }
+}
+</style>
+
+<div class="container">
+
+  <div class="kicker">What We Believe &amp; Value</div>
+
+  <h2 class="title">
+    Rooted in the Apostolic faith.<br>
+    Centered in Jesus Christ.
+  </h2>
+
+  <p class="copy faith-intro">
+    We are committed to the historic Apostolic Pentecostal
+    witness of the New Testament: a Christ-centered,
+    Spirit-filled church that honors Scripture, proclaims
+    the Gospel, lives holy, prays fervently, praises sincerely
+    and believes in the delivering power of Jesus Christ.
+  </p>
+
+  <div class="faith-layout">
+
+    <!-- LEFT DOCTRINAL NAVIGATION -->
+
+    <nav class="faith-navigation"
+         role="tablist"
+         aria-label="Our Statement of Faith">
+
+      <button class="faith-tab active" type="button"
+              id="faith-tab-1" role="tab"
+              aria-controls="faith-panel-1"
+              aria-selected="true">
+        <span class="faith-tab-number">01</span>
+        <span class="faith-tab-label">The Bible</span>
+      </button>
+
+      <button class="faith-tab" type="button"
+              id="faith-tab-2" role="tab"
+              aria-controls="faith-panel-2"
+              aria-selected="false">
+        <span class="faith-tab-number">02</span>
+        <span class="faith-tab-label">Jesus Christ</span>
+      </button>
+
+      <button class="faith-tab" type="button"
+              id="faith-tab-3" role="tab"
+              aria-controls="faith-panel-3"
+              aria-selected="false">
+        <span class="faith-tab-number">03</span>
+        <span class="faith-tab-label">The Gospel</span>
+      </button>
+
+      <button class="faith-tab" type="button"
+              id="faith-tab-4" role="tab"
+              aria-controls="faith-panel-4"
+              aria-selected="false">
+        <span class="faith-tab-number">04</span>
+        <span class="faith-tab-label">New Birth</span>
+      </button>
+
+      <button class="faith-tab" type="button"
+              id="faith-tab-5" role="tab"
+              aria-controls="faith-panel-5"
+              aria-selected="false">
+        <span class="faith-tab-number">05</span>
+        <span class="faith-tab-label">Holy Ghost</span>
+      </button>
+
+      <button class="faith-tab" type="button"
+              id="faith-tab-6" role="tab"
+              aria-controls="faith-panel-6"
+              aria-selected="false">
+        <span class="faith-tab-number">06</span>
+        <span class="faith-tab-label">Holy Living</span>
+      </button>
+
+      <button class="faith-tab" type="button"
+              id="faith-tab-7" role="tab"
+              aria-controls="faith-panel-7"
+              aria-selected="false">
+        <span class="faith-tab-number">07</span>
+        <span class="faith-tab-label">Prayer &amp; Intercession</span>
+      </button>
+
+      <button class="faith-tab" type="button"
+              id="faith-tab-8" role="tab"
+              aria-controls="faith-panel-8"
+              aria-selected="false">
+        <span class="faith-tab-number">08</span>
+        <span class="faith-tab-label">Sincere Praise</span>
+      </button>
+
+      <button class="faith-tab" type="button"
+              id="faith-tab-9" role="tab"
+              aria-controls="faith-panel-9"
+              aria-selected="false">
+        <span class="faith-tab-number">09</span>
+        <span class="faith-tab-label">Deliverance</span>
+      </button>
+
+    </nav>
+
+    <!-- RIGHT DOCTRINAL CONTENT -->
+
+    <div class="faith-content">
+
+      <!-- ARTICLE 01 -->
+
+      <article class="faith-panel active"
+               id="faith-panel-1"
+               role="tabpanel"
+               aria-labelledby="faith-tab-1"
+               tabindex="0">
+
+        <div class="faith-article-number">
+          Article One
+        </div>
+
         <h3>The Bible</h3>
+
         <p>
-          We believe the Holy Scriptures are the divinely inspired,
-          infallible Word of God and the final authority for faith,
-          doctrine, and Christian living. We affirm that the
-          Scriptures reveal God's will, establish sound doctrine,
-          and provide instruction for righteous living.
+          We believe the Holy Scriptures are the divinely
+          inspired, infallible Word of God and the final
+          authority for faith, doctrine, and Christian living.
+          We affirm that the Scriptures reveal God's will,
+          establish sound doctrine, and provide instruction
+          for righteous living.
         </p>
-        <p>
-          <strong>Scriptural Foundation:</strong>
-          2 Timothy 3:16–17; 2 Peter 1:20–21;
-          Psalm 119:105; Hebrews 4:12.
-        </p>
-        <p>
-          <em>"All scripture is given by inspiration of God, and
-          is profitable for doctrine, for reproof, for correction,
-          for instruction in righteousness."</em>
-          — 2 Timothy 3:16 (KJV)
-        </p>
+
+        <div class="faith-scriptures">
+          <strong>Scriptural Foundation</strong>
+          <p>
+            2 Timothy 3:16–17; 2 Peter 1:20–21;
+            Psalm 119:105; Hebrews 4:12.
+          </p>
+        </div>
+
+        <div class="faith-verse">
+          <blockquote>
+            "All scripture is given by inspiration of God,
+            and is profitable for doctrine, for reproof,
+            for correction, for instruction in righteousness."
+          </blockquote>
+          <cite>— 2 Timothy 3:16 (KJV)</cite>
+        </div>
+
       </article>
 
-      <article class="belief">
-        <div class="num">02</div>
+      <!-- ARTICLE 02 -->
+
+      <article class="faith-panel"
+               id="faith-panel-2"
+               role="tabpanel"
+               aria-labelledby="faith-tab-2"
+               tabindex="0">
+
+        <div class="faith-article-number">
+          Article Two
+        </div>
+
         <h3>Jesus Christ</h3>
+
         <p>
-          We believe in one true and living God, who has revealed
-          Himself fully in Jesus Christ. We affirm that Jesus
-          Christ is God manifested in the flesh, the visible
-          image of the invisible God, and the fullness of the
-          Godhead dwelling bodily. He is both fully God and
-          fully man, the Son of God, our Lord, Savior, and
-          Redeemer. We proclaim His virgin birth, sinless life,
-          atoning death, burial, bodily resurrection, and
-          glorious return. We worship Jesus Christ as the
-          revelation of the one God and the only saving name
-          given under heaven, while extending Christian love
-          and fellowship to all who sincerely confess Him as
-          Lord and Savior.
+          We believe in one true and living God, who has
+          revealed Himself fully in Jesus Christ. We affirm
+          that Jesus Christ is God manifested in the flesh,
+          the visible image of the invisible God, and the
+          fullness of the Godhead dwelling bodily. He is
+          both fully God and fully man, the Son of God,
+          our Lord, Savior, and Redeemer. We proclaim His
+          virgin birth, sinless life, atoning death, burial,
+          bodily resurrection, and glorious return. We worship
+          Jesus Christ as the revelation of the one God and the
+          only saving name given under heaven, while extending
+          Christian love and fellowship to all who sincerely
+          confess Him as Lord and Savior.
         </p>
-        <p>
-          <strong>Scriptural Foundation:</strong>
-          Deuteronomy 6:4; Isaiah 9:6; John 1:1–14;
-          John 14:9; 1 Timothy 3:16; Colossians 2:9;
-          Acts 4:12.
-        </p>
-        <p>
-          <em>"For in him dwelleth all the fulness of the
-          Godhead bodily."</em>
-          — Colossians 2:9 (KJV)
-        </p>
+
+        <div class="faith-scriptures">
+          <strong>Scriptural Foundation</strong>
+          <p>
+            Deuteronomy 6:4; Isaiah 9:6;
+            John 1:1–14; John 14:9;
+            1 Timothy 3:16; Colossians 2:9; Acts 4:12.
+          </p>
+        </div>
+
+        <div class="faith-verse">
+          <blockquote>
+            "For in him dwelleth all the fulness of the
+            Godhead bodily."
+          </blockquote>
+          <cite>— Colossians 2:9 (KJV)</cite>
+        </div>
+
       </article>
 
-      <article class="belief">
-        <div class="num">03</div>
+      <!-- ARTICLE 03 -->
+
+      <article class="faith-panel"
+               id="faith-panel-3"
+               role="tabpanel"
+               aria-labelledby="faith-tab-3"
+               tabindex="0">
+
+        <div class="faith-article-number">
+          Article Three
+        </div>
+
         <h3>The Gospel</h3>
+
         <p>
           We proclaim the glorious Gospel of Jesus Christ:
           His death, burial, and resurrection. We believe
-          salvation is made possible through the grace of God
-          and the redemptive work of Jesus Christ. We call
-          every person to respond to the Gospel through faith,
-          repentance, and obedience to the Word of God.
+          salvation is made possible through the grace of
+          God and the redemptive work of Jesus Christ.
+          We call every person to respond to the Gospel
+          through faith, repentance, and obedience to
+          the Word of God.
         </p>
-        <p>
-          <strong>Scriptural Foundation:</strong>
-          1 Corinthians 15:1–4; Romans 1:16;
-          Romans 6:3–4; Ephesians 2:8–9;
-          Mark 16:15–16.
-        </p>
-        <p>
-          <em>"For I am not ashamed of the gospel of Christ:
-          for it is the power of God unto salvation to every
-          one that believeth."</em>
-          — Romans 1:16 (KJV)
-        </p>
+
+        <div class="faith-scriptures">
+          <strong>Scriptural Foundation</strong>
+          <p>
+            1 Corinthians 15:1–4; Romans 1:16;
+            Romans 6:3–4; Ephesians 2:8–9;
+            Mark 16:15–16.
+          </p>
+        </div>
+
+        <div class="faith-verse">
+          <blockquote>
+            "For I am not ashamed of the gospel of Christ:
+            for it is the power of God unto salvation to
+            every one that believeth."
+          </blockquote>
+          <cite>— Romans 1:16 (KJV)</cite>
+        </div>
+
       </article>
 
-      <article class="belief">
-        <div class="num">04</div>
+      <!-- ARTICLE 04 -->
+
+      <article class="faith-panel"
+               id="faith-panel-4"
+               role="tabpanel"
+               aria-labelledby="faith-tab-4"
+               tabindex="0">
+
+        <div class="faith-article-number">
+          Article Four
+        </div>
+
         <h3>New Birth</h3>
+
         <p>
           We believe in the necessity of being born again
           of water and of the Spirit, according to the
           teachings of Jesus Christ and the Apostles.
-          We affirm the apostolic response proclaimed on
-          the Day of Pentecost in Acts 2:38: repentance,
-          water baptism by immersion in the name of Jesus
-          Christ for the remission of sins, and receiving
-          the gift of the Holy Ghost. This promise remains
-          available to all whom the Lord our God shall call.
+          We affirm the apostolic response proclaimed
+          on the Day of Pentecost in Acts 2:38:
+          repentance, water baptism by immersion in
+          the name of Jesus Christ for the remission
+          of sins, and receiving the gift of the Holy Ghost.
+          This promise remains available to all whom the
+          Lord our God shall call.
         </p>
-        <p>
-          <strong>Scriptural Foundation:</strong>
-          John 3:3–5; Acts 2:38–39; Acts 8:12–17;
-          Acts 10:44–48; Acts 19:1–6; Titus 3:5.
-        </p>
-        <p>
-          <em>"Repent, and be baptized every one of you in
-          the name of Jesus Christ for the remission of sins,
-          and ye shall receive the gift of the Holy Ghost."</em>
-          — Acts 2:38 (KJV)
-        </p>
+
+        <div class="faith-scriptures">
+          <strong>Scriptural Foundation</strong>
+          <p>
+            John 3:3–5; Acts 2:38–39;
+            Acts 8:12–17; Acts 10:44–48;
+            Acts 19:1–6; Titus 3:5.
+          </p>
+        </div>
+
+        <div class="faith-verse">
+          <blockquote>
+            "Repent, and be baptized every one of you in
+            the name of Jesus Christ for the remission
+            of sins, and ye shall receive the gift of
+            the Holy Ghost."
+          </blockquote>
+          <cite>— Acts 2:38 (KJV)</cite>
+        </div>
+
       </article>
 
-      <article class="belief">
-        <div class="num">05</div>
+      <!-- ARTICLE 05 -->
+
+      <article class="faith-panel"
+               id="faith-panel-5"
+               role="tabpanel"
+               aria-labelledby="faith-tab-5"
+               tabindex="0">
+
+        <div class="faith-article-number">
+          Article Five
+        </div>
+
         <h3>Holy Ghost</h3>
+
         <p>
           We believe the Holy Ghost is the Spirit of God
           actively working in the Church today. We affirm
-          the Pentecostal experience of the baptism of
-          the Holy Ghost, accompanied by speaking with
-          other tongues as the Spirit gives utterance.
-          The Holy Ghost empowers believers for worship,
-          witness, spiritual transformation, and victorious
-          Christian living. We believe in the continued
-          operation of spiritual gifts, divine guidance,
-          and the manifestation of God's power within
-          the Church.
+          the Pentecostal experience of the baptism of the
+          Holy Ghost, accompanied by speaking with other
+          tongues as the Spirit gives utterance. The Holy
+          Ghost empowers believers for worship, witness,
+          spiritual transformation, and victorious Christian
+          living. We believe in the continued operation of
+          spiritual gifts, divine guidance, and the
+          manifestation of God's power within the Church.
         </p>
-        <p>
-          <strong>Scriptural Foundation:</strong>
-          Joel 2:28–29; Acts 1:8; Acts 2:1–4;
-          Acts 10:44–46; Acts 19:6;
-          1 Corinthians 12:4–11; Galatians 5:22–23.
-        </p>
-        <p>
-          <em>"But ye shall receive power, after that
-          the Holy Ghost is come upon you: and ye shall
-          be witnesses unto me."</em>
-          — Acts 1:8 (KJV)
-        </p>
+
+        <div class="faith-scriptures">
+          <strong>Scriptural Foundation</strong>
+          <p>
+            Joel 2:28–29; Acts 1:8; Acts 2:1–4;
+            Acts 10:44–46; Acts 19:6;
+            1 Corinthians 12:4–11; Galatians 5:22–23.
+          </p>
+        </div>
+
+        <div class="faith-verse">
+          <blockquote>
+            "But ye shall receive power, after that
+            the Holy Ghost is come upon you: and ye
+            shall be witnesses unto me."
+          </blockquote>
+          <cite>— Acts 1:8 (KJV)</cite>
+        </div>
+
       </article>
 
-      <article class="belief">
-        <div class="num">06</div>
+      <!-- ARTICLE 06 -->
+
+      <article class="faith-panel"
+               id="faith-panel-6"
+               role="tabpanel"
+               aria-labelledby="faith-tab-6"
+               tabindex="0">
+
+        <div class="faith-article-number">
+          Article Six
+        </div>
+
         <h3>Holy Living</h3>
+
         <p>
           We believe holiness is the believer's response
           to a holy God and the transforming work of His
@@ -626,22 +1090,40 @@ footer{background:#081b16;color:#fff;padding:34px 0} .foot{display:flex;justify-
           genuine holiness begins in the heart and becomes
           evident in how we live, love, and serve others.
         </p>
-        <p>
-          <strong>Scriptural Foundation:</strong>
-          Leviticus 20:7; Romans 12:1–2;
-          2 Corinthians 7:1; Galatians 5:16–25;
-          1 Peter 1:15–16; Hebrews 12:14.
-        </p>
-        <p>
-          <em>"Follow peace with all men, and holiness,
-          without which no man shall see the Lord."</em>
-          — Hebrews 12:14 (KJV)
-        </p>
+
+        <div class="faith-scriptures">
+          <strong>Scriptural Foundation</strong>
+          <p>
+            Leviticus 20:7; Romans 12:1–2;
+            2 Corinthians 7:1; Galatians 5:16–25;
+            1 Peter 1:15–16; Hebrews 12:14.
+          </p>
+        </div>
+
+        <div class="faith-verse">
+          <blockquote>
+            "Follow peace with all men, and holiness,
+            without which no man shall see the Lord."
+          </blockquote>
+          <cite>— Hebrews 12:14 (KJV)</cite>
+        </div>
+
       </article>
 
-      <article class="belief">
-        <div class="num">07</div>
+      <!-- ARTICLE 07 -->
+
+      <article class="faith-panel"
+               id="faith-panel-7"
+               role="tabpanel"
+               aria-labelledby="faith-tab-7"
+               tabindex="0">
+
+        <div class="faith-article-number">
+          Article Seven
+        </div>
+
         <h3>Prayer &amp; Intercession</h3>
+
         <p>
           We believe prayer is essential to the spiritual
           life of every believer and the continued strength
@@ -652,22 +1134,40 @@ footer{background:#081b16;color:#fff;padding:34px 0} .foot{display:flex;justify-
           and those in need. We believe God hears and
           answers prayer according to His divine will.
         </p>
-        <p>
-          <strong>Scriptural Foundation:</strong>
-          2 Chronicles 7:14; Matthew 6:6;
-          Luke 18:1; 1 Timothy 2:1–4;
-          1 Thessalonians 5:17; James 5:16.
-        </p>
-        <p>
-          <em>"The effectual fervent prayer of a
-          righteous man availeth much."</em>
-          — James 5:16 (KJV)
-        </p>
+
+        <div class="faith-scriptures">
+          <strong>Scriptural Foundation</strong>
+          <p>
+            2 Chronicles 7:14; Matthew 6:6;
+            Luke 18:1; 1 Timothy 2:1–4;
+            1 Thessalonians 5:17; James 5:16.
+          </p>
+        </div>
+
+        <div class="faith-verse">
+          <blockquote>
+            "The effectual fervent prayer of a
+            righteous man availeth much."
+          </blockquote>
+          <cite>— James 5:16 (KJV)</cite>
+        </div>
+
       </article>
 
-      <article class="belief">
-        <div class="num">08</div>
+      <!-- ARTICLE 08 -->
+
+      <article class="faith-panel"
+               id="faith-panel-8"
+               role="tabpanel"
+               aria-labelledby="faith-tab-8"
+               tabindex="0">
+
+        <div class="faith-article-number">
+          Article Eight
+        </div>
+
         <h3>Sincere Praise</h3>
+
         <p>
           We believe praise and worship are sacred
           expressions of our love, gratitude, and
@@ -681,24 +1181,42 @@ footer{background:#081b16;color:#fff;padding:34px 0} .foot{display:flex;justify-
           should be offered freely, reverently,
           and wholeheartedly unto God.
         </p>
-        <p>
-          <strong>Scriptural Foundation:</strong>
-          Psalm 47:1; Psalm 100:1–4;
-          Psalm 149:1–3; Psalm 150:1–6;
-          2 Samuel 6:14; John 4:23–24;
-          Hebrews 13:15.
-        </p>
-        <p>
-          <em>"Let them praise his name in the dance:
-          let them sing praises unto him with the
-          timbrel and harp."</em>
-          — Psalm 149:3 (KJV)
-        </p>
+
+        <div class="faith-scriptures">
+          <strong>Scriptural Foundation</strong>
+          <p>
+            Psalm 47:1; Psalm 100:1–4;
+            Psalm 149:1–3; Psalm 150:1–6;
+            2 Samuel 6:14; John 4:23–24;
+            Hebrews 13:15.
+          </p>
+        </div>
+
+        <div class="faith-verse">
+          <blockquote>
+            "Let them praise his name in the dance:
+            let them sing praises unto him with the
+            timbrel and harp."
+          </blockquote>
+          <cite>— Psalm 149:3 (KJV)</cite>
+        </div>
+
       </article>
 
-      <article class="belief">
-        <div class="num">09</div>
+      <!-- ARTICLE 09 -->
+
+      <article class="faith-panel"
+               id="faith-panel-9"
+               role="tabpanel"
+               aria-labelledby="faith-tab-9"
+               tabindex="0">
+
+        <div class="faith-article-number">
+          Article Nine
+        </div>
+
         <h3>Deliverance</h3>
+
         <p>
           We believe Jesus Christ still saves, heals,
           restores, and delivers. We proclaim that the
@@ -715,23 +1233,135 @@ footer{background:#081b16;color:#fff;padding:34px 0} .foot{display:flex;justify-
           power, and that there is freedom in the
           mighty name of Jesus.
         </p>
-        <p>
-          <strong>Scriptural Foundation:</strong>
-          Isaiah 53:4–5; Psalm 103:1–5;
-          Luke 4:18; Mark 16:17–18;
-          John 8:36; Acts 10:38;
-          James 5:14–16.
-        </p>
-        <p>
-          <em>"If the Son therefore shall make you
-          free, ye shall be free indeed."</em>
-          — John 8:36 (KJV)
-        </p>
+
+        <div class="faith-scriptures">
+          <strong>Scriptural Foundation</strong>
+          <p>
+            Isaiah 53:4–5; Psalm 103:1–5;
+            Luke 4:18; Mark 16:17–18;
+            John 8:36; Acts 10:38;
+            James 5:14–16.
+          </p>
+        </div>
+
+        <div class="faith-verse">
+          <blockquote>
+            "If the Son therefore shall make you
+            free, ye shall be free indeed."
+          </blockquote>
+          <cite>— John 8:36 (KJV)</cite>
+        </div>
+
       </article>
 
     </div>
   </div>
+</div>
+
+<!-- DOCTRINAL NAVIGATION JAVASCRIPT -->
+
+<script>
+(function () {
+
+  const section = document.getElementById("beliefs");
+
+  if (!section) return;
+
+  const tabs = Array.from(
+    section.querySelectorAll(".faith-tab")
+  );
+
+  const panels = Array.from(
+    section.querySelectorAll(".faith-panel")
+  );
+
+  if (!tabs.length || tabs.length !== panels.length) return;
+
+  function showDoctrine(index, moveFocus = false) {
+
+    tabs.forEach(function (tab, i) {
+
+      const active = i === index;
+
+      tab.classList.toggle("active", active);
+
+      tab.setAttribute(
+        "aria-selected",
+        String(active)
+      );
+
+      tab.tabIndex = active ? 0 : -1;
+
+    });
+
+    panels.forEach(function (panel, i) {
+
+      const active = i === index;
+
+      panel.hidden = !active;
+
+      panel.classList.toggle("active", active);
+
+    });
+
+    if (moveFocus) {
+      tabs[index].focus();
+    }
+
+  }
+
+  tabs.forEach(function (tab, index) {
+
+    tab.addEventListener("click", function () {
+      showDoctrine(index);
+    });
+
+    tab.addEventListener("keydown", function (event) {
+
+      let nextIndex;
+
+      switch (event.key) {
+
+        case "ArrowDown":
+        case "ArrowRight":
+          nextIndex = (index + 1) % tabs.length;
+          break;
+
+        case "ArrowUp":
+        case "ArrowLeft":
+          nextIndex =
+            (index - 1 + tabs.length) % tabs.length;
+          break;
+
+        case "Home":
+          nextIndex = 0;
+          break;
+
+        case "End":
+          nextIndex = tabs.length - 1;
+          break;
+
+        default:
+          return;
+
+      }
+
+      event.preventDefault();
+
+      showDoctrine(nextIndex, true);
+
+    });
+
+  });
+
+  // Default opening article
+  showDoctrine(0);
+
+})();
+</script>
+
 </section>
+
 
 
 <section class="respond" id="respond">
