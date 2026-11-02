@@ -191,6 +191,134 @@ footer{background:#081b16;color:#fff;padding:34px 0} .foot{display:flex;justify-
     padding: 16px;
   }
 }
+
+/* COMPACT DOCTRINE DROPDOWNS */
+
+#beliefs .beliefs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 860px;
+  margin: 30px auto 0;
+  gap: 10px;
+  align-items: start;
+}
+
+#beliefs .belief {
+  display: block;
+  padding: 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#beliefs .belief summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 15px 22px;
+  cursor: pointer;
+  list-style: none;
+  transition: background 0.2s ease;
+}
+
+#beliefs .belief summary::-webkit-details-marker {
+  display: none;
+}
+
+#beliefs .belief summary:hover {
+  background: var(--cream);
+}
+
+#beliefs .belief summary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -3px;
+}
+
+/* Number */
+#beliefs .belief summary .num {
+  font-size: 1.35rem;
+  line-height: 1;
+  width: 34px;
+  flex-shrink: 0;
+  margin: 0;
+  color: var(--gold);
+}
+
+/* Title */
+#beliefs .belief summary h3 {
+  flex: 1;
+  font-size: 1.12rem;
+  line-height: 1.35;
+  margin: 0;
+  color: var(--deep);
+}
+
+/* Plus / Minus */
+#beliefs .belief .belief-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+#beliefs .belief .belief-icon::before {
+  content: "+";
+}
+
+#beliefs .belief details[open] .belief-icon::before {
+  content: "−";
+}
+
+#beliefs .belief details[open] summary {
+  background: var(--cream);
+}
+
+/* Expanded content */
+#beliefs .belief-content {
+  padding: 4px 24px 24px 72px;
+  border-top: 1px solid var(--line);
+}
+
+#beliefs .belief-content p {
+  font-size: 0.91rem;
+  line-height: 1.8;
+  margin: 16px 0 0;
+}
+
+#beliefs .belief-content p:nth-of-type(2) {
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+#beliefs .belief-content p:last-of-type {
+  padding: 14px 16px;
+  margin-top: 16px;
+  background: rgba(185, 148, 82, 0.07);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  #beliefs .beliefs-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  #beliefs .belief summary {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  #beliefs .belief summary h3 {
+    font-size: 1rem;
+  }
+
+  #beliefs .belief-content {
+    padding: 4px 18px 20px;
+  }
+}
 </style>
 
   <!-- Search Engine Optimization -->
@@ -744,4 +872,70 @@ footer{background:#081b16;color:#fff;padding:34px 0} .foot{display:flex;justify-
 </script>
 <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const grid = document.querySelector(
+    "#beliefs .beliefs-grid"
+  );
+
+  if (!grid) return;
+
+  const cards = grid.querySelectorAll(".belief");
+
+  cards.forEach(function (card) {
+
+    // Prevent duplicate dropdowns
+    if (card.querySelector("details")) return;
+
+    const number = card.querySelector(".num");
+    const heading = card.querySelector("h3");
+
+    if (!heading) return;
+
+    // Create dropdown
+    const details = document.createElement("details");
+    const summary = document.createElement("summary");
+    const content = document.createElement("div");
+    const icon = document.createElement("span");
+
+    content.className = "belief-content";
+    icon.className = "belief-icon";
+    icon.setAttribute("aria-hidden", "true");
+
+    // Move number and heading into clickable title
+    if (number) summary.appendChild(number);
+    summary.appendChild(heading);
+    summary.appendChild(icon);
+
+    // Move existing doctrinal text and scriptures
+    while (card.firstChild) {
+      content.appendChild(card.firstChild);
+    }
+
+    details.appendChild(summary);
+    details.appendChild(content);
+    card.appendChild(details);
+
+    // Only one doctrine dropdown open at a time
+    details.addEventListener("toggle", function () {
+
+      if (!details.open) return;
+
+      grid.querySelectorAll("details[open]")
+        .forEach(function (other) {
+
+          if (other !== details) {
+            other.open = false;
+          }
+
+        });
+
+    });
+
+  });
+
+});
+</script>
 </body></html>
